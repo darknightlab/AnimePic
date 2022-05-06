@@ -29,17 +29,17 @@ function upload(file) {
             $("[mdtarget]").text(JSON.stringify(result));
             let imgblob = URL.createObjectURL(file);
             $("#image").attr("src", imgblob);
-            $("#system-tags .mdui-panel-item-body").empty();
-            $("#character-tags .mdui-panel-item-body").empty();
-            $("#general-tags .mdui-panel-item-body").empty();
+            $("#system-tags .mdui-panel-item-body .mdui-list").empty();
+            $("#character-tags .mdui-panel-item-body .mdui-list").empty();
+            $("#general-tags .mdui-panel-item-body .mdui-list").empty();
             Object.keys(result.system).forEach((tag) => {
-                $("#system-tags .mdui-panel-item-body").append(genTag(tag, result.system[tag]));
+                $("#system-tags .mdui-panel-item-body .mdui-list").append(genTag(tag, result.system[tag]));
             });
             Object.keys(result.character).forEach((tag) => {
-                $("#character-tags .mdui-panel-item-body").append(genTag(tag, result.character[tag]));
+                $("#character-tags .mdui-panel-item-body .mdui-list").append(genTag(tag, result.character[tag]));
             });
             Object.keys(result.general).forEach((tag) => {
-                $("#general-tags .mdui-panel-item-body").append(genTag(tag, result.general[tag]));
+                $("#general-tags .mdui-panel-item-body .mdui-list").append(genTag(tag, result.general[tag]));
             });
             $("#introduce-content").addClass("mdui-hidden");
             $("#tags-content").removeClass("mdui-hidden");
@@ -54,10 +54,10 @@ function upload(file) {
 
 function genTag(tag, score) {
     let t = $(`
-        <div class="mdui-panel-item-header">
-        <div class="mdui-panel-item-title"><a href=""></a></div>
-        <div class="mdui-panel-item-summary"></div>
-        </div>
+        <li class="mdui-list-item mdui-ripple">
+        <div class="mdui-col-xs-9 mdui-col-sm-6"><a href=""></a></div>
+        <div class="mdui-col-xs-3 mdui-col-sm-6"></div>
+        </li>
     `);
     let a = t.children()[0].children[0];
     a.textContent = tag;
