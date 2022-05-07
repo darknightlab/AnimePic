@@ -60,7 +60,7 @@ function genTag(tag, score) {
         </li>
     `);
     let a = t.children()[0].children[0];
-    a.textContent = tag;
+    a.textContent = tag.replaceAll("_", " ");
     a.setAttribute("href", `https://danbooru.donmai.us/wiki_pages/show_or_new?title=${tag}`);
     a.setAttribute("target", "_blank");
     t.children()[1].textContent = score.toFixed(4);
