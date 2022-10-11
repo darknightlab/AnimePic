@@ -45,6 +45,7 @@ function upload(file) {
             $("#tags-content").removeClass("mdui-hidden");
             $("#image-area").removeClass("mdui-hidden");
             $("#image-title").text(file.name);
+            console.log((Object.keys(result.character).join() + "," + Object.keys(result.general).join()).replaceAll("_", " "));
         },
         error: function (e) {
             log("上传失败");
